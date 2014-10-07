@@ -21,4 +21,4 @@ $ curl -i "http://$(boot2docker ip 2>/dev/null):9200"
 ```
 
 
-Doug Tangren (softprops) d.tangren@gmail.com
+Doug Tangren (softprops) 2014
