@@ -19,7 +19,8 @@ COPY ./bin/run /bin/run
 
 RUN export ES_VERSION=1.3.4 && curl --progress-bar \
      "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-$ES_VERSION.tar.gz" \
-     | tar xz && mv "elasticsearch-$ES_VERSION" elasticsearch
+     | tar xz && mv "elasticsearch-$ES_VERSION" elasticsearch \
+     && apt-get purge -y curl
 
 RUN mkdir -p /data
 
@@ -31,4 +32,4 @@ VOLUME /data
 
 CMD /bin/run
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
